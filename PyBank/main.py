@@ -5,7 +5,8 @@ import csv
 #set the path
 
 budgetcsvpath = os.path.join(".", "Resources", "budget_data.csv")
-print(budgetcsvpath)
+outputpath = os.path.join(".", "Analysis", "output.csv")  #output file
+#print(budgetcsvpath)
 
 #open the file and assign it to budgetfile
 
@@ -63,15 +64,21 @@ with open (budgetcsvpath,newline="") as budgetfile:
     max_valuemonth = month_tracker[max_valueindex] #get max value change month
 
     # loop for comparing the value of profit change 
-    print(f"  Financial Analysis ")
-    print(f"-------------------------------------")
-    print(f"  Total Months : {count}")
-    print(f"  Total Amount : {Net_amount}")
-    print(f"  Average Change : {avg_change}")
-    print(f"  Greatest increase in Profits  : {max_valuemonth}    (${max_value})")
-    print(f"  Greatest decrease in Profits  : {min_valuemonth}    (${min_value})")
 
-   
+    Output = (
+    f"\nFinancial Analysis\n"
+    f"-------------------------------------\n"
+    f"  Total Months : {count}\n"
+    f"  Total Amount : {Net_amount}\n"
+    f"  Average Change : {avg_change}\n"
+    f"  Greatest increase in Profits  : {max_valuemonth}    (${max_value})\n"
+    f"  Greatest decrease in Profits  : {min_valuemonth}    (${min_value})\n"
+    )
+    print(Output)
+
+with open(outputpath,"w") as output_file:
+        output_file.write(Output)
+    
 
 
 

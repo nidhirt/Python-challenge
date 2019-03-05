@@ -23,28 +23,34 @@ with open (budgetcsvpath,newline="") as budgetfile:
     profit_tracker = []
     first_row = 'y'
     month_tracker = []
+    profitloss =[]
+    index =0
   
     for row in budgetreader:
         
-        change = int(row[1])
-        count = count + 1
+        change = int(row[1]) #is for feb-10 984655
+        profitloss.append(change) #[867884, 984655, 322013]
+        count = count + 1 #1 for jan
+
         # print("Row 1 ", type(row[1]))
         Net_amount = Net_amount + int(row[1]) #because row[1] always returns a string #list of strings
         # print(Net_amount)
         
+        if index ==0:
+            index_tracker = 0
+            #difference = int(row[1]) - int(profitloss[index_tracker]) # for jan - 867884-867884 index[0]
+            difference = 0
+            #profit_tracker.append(difference) #[0,116771,]
+            #month_tracker.append(row[0]) #[jan-10, feb-10, mar-10, apr-10,...]
 
-        while first_row == "y":
-            
-           count = count + 1
-           Net_amount = Net_amount + int(row[1])
-           
-           change = int(row[1])
-           next(budgetreader) #skip the first row as teh value is considered in change
-           first_row = 'n'
+            index += 1
+        else:
+            index_tracker = index-1 #0 for jan #1 for feb
+            difference = int(row[1]) - int(profitloss[index_tracker]) # for jan - 867884-867884 index[0]
+            profit_tracker.append(difference) #[0,116771,]
+            month_tracker.append(row[0]) #[jan-10, feb-10, mar-10, apr-10,...]
+            index += 1 #2
 
-        difference = int(row[1]) - change # get the change
-        profit_tracker.append(difference)
-        month_tracker.append(row[0])
 
     print(f"profit_tracker , Month  :  {profit_tracker} ,  {month_tracker}")
        

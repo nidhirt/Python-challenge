@@ -5,7 +5,7 @@ import csv
 #set the path
 
 budgetcsvpath = os.path.join(".", "Resources", "budget_data.csv")
-outputpath = os.path.join(".", "Analysis", "output.csv")  #output file
+outputpath = os.path.join(".", "Analysis", "output.txt")  #output file
 #print(budgetcsvpath)
 
 #open the file and assign it to budgetfile

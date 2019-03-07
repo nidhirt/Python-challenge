@@ -7,7 +7,7 @@ import re
 #set the path
 
 pollcsvpath = os.path.join(".", "Resources", "election_data.csv")
-outputpath = os.path.join(".", "Analysis", "output.txt")  #output file
+outputpath = os.path.join(".", "output.txt")  #output file
 
 #open the file and assign it to pollfile
 
